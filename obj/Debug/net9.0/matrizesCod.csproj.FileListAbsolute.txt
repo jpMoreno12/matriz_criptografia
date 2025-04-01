@@ -1,0 +1,14 @@
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\bin\Debug\net9.0\matrizesCod.exe
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\bin\Debug\net9.0\matrizesCod.deps.json
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\bin\Debug\net9.0\matrizesCod.runtimeconfig.json
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\bin\Debug\net9.0\matrizesCod.dll
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\bin\Debug\net9.0\matrizesCod.pdb
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\obj\Debug\net9.0\matrizesCod.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\obj\Debug\net9.0\matrizesCod.AssemblyInfoInputs.cache
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\obj\Debug\net9.0\matrizesCod.AssemblyInfo.cs
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\obj\Debug\net9.0\matrizesCod.csproj.CoreCompileInputs.cache
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\obj\Debug\net9.0\matrizesCod.dll
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\obj\Debug\net9.0\refint\matrizesCod.dll
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\obj\Debug\net9.0\matrizesCod.pdb
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\obj\Debug\net9.0\matrizesCod.genruntimeconfig.cache
+C:\Users\joaom\OneDrive\Desktop\matrizes\matrizesCod\obj\Debug\net9.0\ref\matrizesCod.dll
