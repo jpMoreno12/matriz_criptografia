@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using matrizesCod;
 
 namespace MyApp
@@ -9,19 +10,38 @@ namespace MyApp
         
         static void Main(string[] args)
         {
+            LettersDict lettersDict = new LettersDict();
+            
             Console.ForegroundColor = ConsoleColor.Cyan;
             string Name = " ";
 
             CheckName(ref Name);
-            LettersDict.CallsDicitionary();
-            
-            foreach (var item in LettersDict.LettersValues)
-            {
-                Console.WriteLine(item.Key);
-            }
-
-
+            ConvertToMatriz(ref Name); 
+             
         }
+
+        static void ConvertToMatriz(ref string name)
+        {
+            double LenghtName = (double)name.Length;
+            double SizeLine = default; 
+            int EachLine = default; 
+            
+
+            Console.WriteLine($"{LenghtName:F2}");
+            
+            if (LenghtName % 2 != 0)
+            {
+                SizeLine = LenghtName / 2; 
+                EachLine = (int)SizeLine + 1;
+            }
+            else
+            {
+                SizeLine = LenghtName / 2;
+                EachLine = (int)SizeLine;
+            }
+            Console.WriteLine(EachLine);
+        }
+        
         static void CheckName(ref string name)
         {
             List<char> Numbers = new List<char> { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };

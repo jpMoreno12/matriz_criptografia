@@ -7,22 +7,26 @@ namespace matrizesCod
 {
     public class LettersDict
     {
-        public static Dictionary<char, int> LettersValues { get; }
+        public static Dictionary<char, int> LettersValues { get; } = new Dictionary<char, int>() {};
 
         private static void GetLettters()
         {
             int CounterLetters = 1;
-            for (char i = 'A'; i < 'Z'; i++)
+            for (char i = 'A'; i <= 'Z'; i++)
             {
                 LettersValues.Add(i, CounterLetters);
                 CounterLetters++;
             }
         }
 
-        public static void CallsDicitionary()
+        protected void CallsToDict()
         {
             GetLettters();
         }
 
+        public LettersDict()
+        {
+            this.CallsToDict();
+        }
     }
 }
