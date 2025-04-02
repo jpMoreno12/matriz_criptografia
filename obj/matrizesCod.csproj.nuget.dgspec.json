@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/morendev00/Documents/projetos_geral/matrizCript/matriz_criptografia/matrizesCod.csproj": {}
+    "C:\\Users\\joaom\\OneDrive\\Desktop\\matrizes\\matrizesCod\\matrizesCod.csproj": {}
   },
   "projects": {
-    "/home/morendev00/Documents/projetos_geral/matrizCript/matriz_criptografia/matrizesCod.csproj": {
+    "C:\\Users\\joaom\\OneDrive\\Desktop\\matrizes\\matrizesCod\\matrizesCod.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/morendev00/Documents/projetos_geral/matrizCript/matriz_criptografia/matrizesCod.csproj",
+        "projectUniqueName": "C:\\Users\\joaom\\OneDrive\\Desktop\\matrizes\\matrizesCod\\matrizesCod.csproj",
         "projectName": "matrizesCod",
-        "projectPath": "/home/morendev00/Documents/projetos_geral/matrizCript/matriz_criptografia/matrizesCod.csproj",
-        "packagesPath": "/home/morendev00/.nuget/packages/",
-        "outputPath": "/home/morendev00/Documents/projetos_geral/matrizCript/matriz_criptografia/obj/",
+        "projectPath": "C:\\Users\\joaom\\OneDrive\\Desktop\\matrizes\\matrizesCod\\matrizesCod.csproj",
+        "packagesPath": "C:\\Users\\joaom\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\joaom\\OneDrive\\Desktop\\matrizes\\matrizesCod\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/morendev00/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\joaom\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
