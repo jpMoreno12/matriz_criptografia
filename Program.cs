@@ -13,15 +13,33 @@ namespace MyApp
 
             LettersDict lettersDict = new LettersDict();
 
+            Console.Write("{ ");
+            foreach (var letter in LettersDict.LettersValues)
+            {
+                Console.Write($"Letra {letter.Key}: {letter.Value}, ");
+            }
+            Console.Write(" }");
+            Console.WriteLine("\n");
+
             Console.ForegroundColor = ConsoleColor.Cyan;
             string Name = " ";
 
             CheckName(ref Name);
-            ConvertToMatriz(ref Name);
+            int[,] NameMatrix = ConvertToMatriz(ref Name);
+
+            for (int i = 0; i < NameMatrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < NameMatrix.GetLength(1); j++)
+                {
+                    Console.Write(NameMatrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
 
         }
 
-        static void ConvertToMatriz(ref string name)
+        static int[,] ConvertToMatriz(ref string name)
         {
             double LenghtName = (double)name.Length;
             double SizeLine = default;
@@ -41,27 +59,36 @@ namespace MyApp
                 ColumnsNumber = (int)SizeLine;
             }
 
-            char[,] NameMatrix = new char[2, ColumnsNumber];
-
+            int[,] NameMatrix = new int[2, ColumnsNumber];  
             int IndexForName = 0;
+
+            IEnumerable<char> keys = LettersDict.LettersValues.Keys;
+
+
+            char[] KeysInDictionary = LettersDict.LettersValues.Keys.ToArray();
+
+            //criar uma matriz com o novo array
             for (int i = 0; i < NameMatrix.GetLength(0); i++)
             {
                 for (int j = 0; j < NameMatrix.GetLength(1); j++)
                 {
-                    NameMatrix[i, j] = name[IndexForName];
+                    char CharacterName = ' ';
+                    for (int k = 0; k < name.Length; k++)
+                    {
+                        for (int l = 0; l < KeysInDictionary.Length; l++)
+                        {
+                            if (name[k] == KeysInDictionary[l])
+                            {
+                                CharacterName = KeysInDictionary[l];
+                            }
+                        }
+                    }
+                    NameMatrix[i, j] = LettersDict.LettersValues[CharacterName];
                     IndexForName++;
                 }
             }
 
-
-            for (int i = 0; i < NameMatrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < NameMatrix.GetLength(1); j++)
-                {
-                    Console.Write(NameMatrix[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
+            return NameMatrix;
         }
 
         static void CheckName(ref string name)

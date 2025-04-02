@@ -7,7 +7,7 @@ namespace matrizesCod
 {
     public class LettersDict
     {
-        public static Dictionary<char, int> LettersValues { get; } = new Dictionary<char, int>() {};
+        public static Dictionary<char, int> LettersValues { get; } = new Dictionary<char, int>() { };
 
         private static void GetLettters()
         {
@@ -17,6 +17,10 @@ namespace matrizesCod
                 LettersValues.Add(i, CounterLetters);
                 CounterLetters++;
             }
+            LettersValues.Add('.', 27);
+            LettersValues.Add('!', 28);
+            LettersValues.Add('#', 29);
+            LettersValues.Add(' ', 30);
         }
 
         protected void CallsToDict()
