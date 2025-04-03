@@ -21,13 +21,14 @@ namespace MyApp
 
             EncryptionMethod(ref Matrix);
 
-            for (int i = 0; i < Matrix.GetLength(0); i++)
+/*             for (int i = 0; i < Matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < Matrix.GetLength(1); j++)
                 {
-
+                    Console.Write(Matrix[i,j] + " ");
                 }
-            }
+                Console.WriteLine(); 
+            } */
 
 
 
@@ -158,7 +159,33 @@ namespace MyApp
 
         static void EncryptionMethod(ref int[,] matrix)
         {
-            
+            int[,] EncoderMatrix = new int[,] { { 3, 1 }, { 2, 1 } };
+            int[,] NewMatrix = new int[matrix.GetLength(0), matrix.GetLength(1)]; 
+
+            int IndexLine = 0;
+            int IndexColumn = 0;
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    NewMatrix[i,j] = matrix[i, j] * EncoderMatrix[IndexLine, IndexColumn];
+                    IndexLine++;
+                    IndexColumn++;
+                }
+            }
+
+            Console.WriteLine("Matriz nova Criptografada: ");
+            Console.WriteLine();
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(NewMatrix[i,j] + " ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
