@@ -12,34 +12,28 @@ namespace MyApp
         {
 
             LettersDict lettersDict = new LettersDict();
-
-            Console.Write("{ ");
-            foreach (var letter in LettersDict.LettersValues)
-            {
-                Console.Write($"Letra {letter.Key}: {letter.Value}, ");
-            }
-            Console.Write(" }");
-            Console.WriteLine("\n");
-
             Console.ForegroundColor = ConsoleColor.Cyan;
+
             string Name = " ";
 
             CheckName(ref Name);
-            int[,] NameMatrix = ConvertToMatriz(ref Name);
+            int[,] Matrix = ConvertNameToMatrix(ref Name);
 
-            for (int i = 0; i < NameMatrix.GetLength(0); i++)
+            EncryptionMethod(ref Matrix);
+
+            for (int i = 0; i < Matrix.GetLength(0); i++)
             {
-                for (int j = 0; j < NameMatrix.GetLength(1); j++)
+                for (int j = 0; j < Matrix.GetLength(1); j++)
                 {
-                    Console.Write(NameMatrix[i, j] + " ");
+
                 }
-                Console.WriteLine();
             }
+
 
 
         }
 
-        static int[,] ConvertToMatriz(ref string name)
+        static int[,] ConvertNameToMatrix(ref string name)
         {
             double LenghtName = (double)name.Length;
             double SizeLine = default;
@@ -76,21 +70,44 @@ namespace MyApp
             }
 
             int[,] NameMatrix = new int[2, ColumnsNumber];
+
+            BuildingMatrix(ref NameMatrix, name);
+
+            return NameMatrix; 
+        }
+
+        static void BuildingMatrix(ref int[,] nameMatrix, string name)
+        {
+            IEnumerable<char> keys = LettersDict.LettersValues.Keys;
+            char[] KeysInDictionary = LettersDict.LettersValues.Keys.ToArray();
+
+            List<char> LettersInName = new List<char> { };
+
+            foreach (var character in name)
+            {
+                foreach (var letter in LettersDict.LettersValues)
+                {
+
+                    if (letter.Key == character)
+                    {
+                        LettersInName.Add(letter.Key);
+                    }
+                }
+            }
+
             int IndexForName = 0;
 
 
             //criar uma matriz com o novo array
-            for (int i = 0; i < NameMatrix.GetLength(0); i++)
+            for (int i = 0; i < nameMatrix.GetLength(0); i++)
             {
 
-                for (int j = 0; j < NameMatrix.GetLength(1); j++)
+                for (int j = 0; j < nameMatrix.GetLength(1); j++)
                 {
-                    NameMatrix[i, j] = LettersDict.LettersValues[LettersInName[IndexForName]];
+                    nameMatrix[i, j] = LettersDict.LettersValues[LettersInName[IndexForName]];
                     IndexForName++;
                 }
             }
-
-            return NameMatrix;
         }
 
         static void CheckName(ref string name)
@@ -136,6 +153,12 @@ namespace MyApp
                     Console.WriteLine("Digite Novamente: ");
                 }
             }
+        }
+
+
+        static void EncryptionMethod(ref int[,] matrix)
+        {
+            
         }
     }
 }
