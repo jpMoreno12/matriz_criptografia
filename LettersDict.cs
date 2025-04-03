@@ -7,7 +7,7 @@ namespace matrizesCod
 {
     public class LettersDict
     {
-        public static Dictionary<char, int> LettersValues { get; } = new Dictionary<char, int>() { };
+        public static Dictionary<char, int> LettersValues { get; set; } = new Dictionary<char, int>() { };
 
         private static void GetLettters()
         {

@@ -58,32 +58,34 @@ namespace MyApp
                 SizeLine = LenghtName / 2;
                 ColumnsNumber = (int)SizeLine;
             }
+            IEnumerable<char> keys = LettersDict.LettersValues.Keys;
+            char[] KeysInDictionary = LettersDict.LettersValues.Keys.ToArray();
 
-            int[,] NameMatrix = new int[2, ColumnsNumber];  
+            List<char> LettersInName = new List<char> { };
+
+            foreach (var character in name)
+            {
+                foreach (var letter in LettersDict.LettersValues)
+                {
+
+                    if (letter.Key == character)
+                    {
+                        LettersInName.Add(letter.Key);
+                    }
+                }
+            }
+
+            int[,] NameMatrix = new int[2, ColumnsNumber];
             int IndexForName = 0;
 
-            IEnumerable<char> keys = LettersDict.LettersValues.Keys;
-
-
-            char[] KeysInDictionary = LettersDict.LettersValues.Keys.ToArray();
 
             //criar uma matriz com o novo array
             for (int i = 0; i < NameMatrix.GetLength(0); i++)
             {
+
                 for (int j = 0; j < NameMatrix.GetLength(1); j++)
                 {
-                    char CharacterName = ' ';
-                    for (int k = 0; k < name.Length; k++)
-                    {
-                        for (int l = 0; l < KeysInDictionary.Length; l++)
-                        {
-                            if (name[k] == KeysInDictionary[l])
-                            {
-                                CharacterName = KeysInDictionary[l];
-                            }
-                        }
-                    }
-                    NameMatrix[i, j] = LettersDict.LettersValues[CharacterName];
+                    NameMatrix[i, j] = LettersDict.LettersValues[LettersInName[IndexForName]];
                     IndexForName++;
                 }
             }
