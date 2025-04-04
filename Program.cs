@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text;
 using matrizesCod;
 
 namespace MyApp
@@ -19,16 +20,21 @@ namespace MyApp
             CheckName(ref Name);
             int[,] Matrix = ConvertNameToMatrix(ref Name);
 
-            EncryptionMethod(ref Matrix);
-
-/*             for (int i = 0; i < Matrix.GetLength(0); i++)
+            for (int i = 0; i < Matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < Matrix.GetLength(1); j++)
                 {
                     Console.Write(Matrix[i,j] + " ");
                 }
                 Console.WriteLine(); 
-            } */
+            }
+
+            Console.WriteLine();
+
+            EncryptionMethod(ref Matrix);
+
+            int[,] MatrizTeste = new int[,] {{2 + 2, 3 + 4}};
+            
 
 
 
@@ -160,19 +166,36 @@ namespace MyApp
         static void EncryptionMethod(ref int[,] matrix)
         {
             int[,] EncoderMatrix = new int[,] { { 3, 1 }, { 2, 1 } };
-            int[,] NewMatrix = new int[matrix.GetLength(0), matrix.GetLength(1)]; 
+            int[,] NewMatrix = new int[matrix.GetLength(0), matrix.GetLength(1)];
 
             int IndexLine = 0;
             int IndexColumn = 0;
 
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            bool MultipliedLine = false;
+            for (int LineEnconder = 0; LineEnconder < EncoderMatrix.GetLength(0); LineEnconder++)
             {
-
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int ColumEncoder = 0; ColumEncoder < EncoderMatrix.GetLength(1); ColumEncoder++)
                 {
-                    NewMatrix[i,j] = matrix[i, j] * EncoderMatrix[IndexLine, IndexColumn];
-                    IndexLine++;
-                    IndexColumn++;
+                    for (int LineCurrent = 0; LineCurrent < matrix.GetLength(0); LineCurrent++)
+                    {
+                        for (int ColumnCurrent = 0; ColumnCurrent < matrix.GetLength(1); ColumnCurrent++)
+                        {
+
+                            if (MultipliedLine == false)
+                            {
+                                NewMatrix[LineCurrent, ColumnCurrent] = matrix[LineCurrent, ColumnCurrent] * EncoderMatrix[LineEnconder, ColumEncoder];
+                            }
+
+                            if (MultipliedLine)
+                            {
+                                NewMatrix[LineCurrent, ColumnCurrent] = NewMatrix[LineCurrent, ColumnCurrent] +
+                             (NewMatrix[LineCurrent, ColumnCurrent] = matrix[LineCurrent, ColumnCurrent] * EncoderMatrix[LineEnconder, ColumEncoder]);
+                            }
+                            
+                        }
+                    
+                    }
+            MultipliedLine = true;
                 }
             }
 
@@ -182,7 +205,7 @@ namespace MyApp
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    Console.Write(NewMatrix[i,j] + " ");
+                    Console.Write(NewMatrix[i, j] + " ");
                 }
                 Console.WriteLine();
             }
