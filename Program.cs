@@ -33,8 +33,17 @@ namespace MyApp
 
             EncryptionMethod(ref Matrix);
 
-            int[,] MatrizTeste = new int[,] {{2 + 2, 3 + 4}};
-            
+            int[,] MatrizTeste = new int[,] {{3, 1}, {2, 1}};
+            Console.WriteLine();
+            for (int i = 0; i < MatrizTeste.GetLength(0); i++)
+            {
+                for (int j = 0; j < MatrizTeste.GetLength(1); j++)
+                {
+                    Console.Write(MatrizTeste[j,i] + " ");
+                }
+                Console.WriteLine();
+            }
+
 
 
 
@@ -168,36 +177,19 @@ namespace MyApp
             int[,] EncoderMatrix = new int[,] { { 3, 1 }, { 2, 1 } };
             int[,] NewMatrix = new int[matrix.GetLength(0), matrix.GetLength(1)];
 
-            int IndexLine = 0;
-            int IndexColumn = 0;
-
-            bool MultipliedLine = false;
-            for (int LineEnconder = 0; LineEnconder < EncoderMatrix.GetLength(0); LineEnconder++)
+            for (int i = 0; i < EncoderMatrix.GetLength(0); i++) // linhas da EncoderMatrix
             {
-                for (int ColumEncoder = 0; ColumEncoder < EncoderMatrix.GetLength(1); ColumEncoder++)
+                for (int j = 0; j < matrix.GetLength(1); j++) // colunas da matrix
                 {
-                    for (int LineCurrent = 0; LineCurrent < matrix.GetLength(0); LineCurrent++)
+                    int sum = 0;
+                    for (int k = 0; k < matrix.GetLength(0); k++) // linhas da matrix (ou colunas da Encoder)
                     {
-                        for (int ColumnCurrent = 0; ColumnCurrent < matrix.GetLength(1); ColumnCurrent++)
-                        {
-
-                            if (MultipliedLine == false)
-                            {
-                                NewMatrix[LineCurrent, ColumnCurrent] = matrix[LineCurrent, ColumnCurrent] * EncoderMatrix[LineEnconder, ColumEncoder];
-                            }
-
-                            if (MultipliedLine)
-                            {
-                                NewMatrix[LineCurrent, ColumnCurrent] = NewMatrix[LineCurrent, ColumnCurrent] +
-                             (NewMatrix[LineCurrent, ColumnCurrent] = matrix[LineCurrent, ColumnCurrent] * EncoderMatrix[LineEnconder, ColumEncoder]);
-                            }
-                            
-                        }
-                    
+                        sum += EncoderMatrix[i, k] * matrix[k, j];
                     }
-            MultipliedLine = true;
+                    NewMatrix[i, j] = sum;
                 }
             }
+
 
             Console.WriteLine("Matriz nova Criptografada: ");
             Console.WriteLine();
