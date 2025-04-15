@@ -33,20 +33,6 @@ namespace MyApp
 
             EncryptionMethod(ref Matrix);
 
-            /* int[,] MatrizTeste = new int[,] {{3, 1}, {2, 1}};
-            Console.WriteLine();
-            for (int i = 0; i < MatrizTeste.GetLength(0); i++)
-            {
-                for (int j = 0; j < MatrizTeste.GetLength(1); j++)
-                {
-                    Console.Write(MatrizTeste[j,i] + " ");
-                }
-                Console.WriteLine();
-            } */
-
-
-
-
         }
 
         static int[,] ConvertNameToMatrix(ref string name)
@@ -213,12 +199,32 @@ namespace MyApp
 
                 if (ConfirmCharacter == 'S')
                 {
+                     
+                    int[,] DecryptedMatrix = new int[NewMatrix.GetLength(0), NewMatrix.GetLength(1)];
+                    int[,] MatrixDecrypt = DecryptMatrix(NewMatrix, DecryptedMatrix);
 
-                    int[,] MatrixDecrypt = DecryptMatrix(NewMatrix);
-                    
-                    if(MatrixDecrypt.GetLength(0) == matrix.GetLength(0) || MatrixDecrypt.GetLength(1) == matrix.GetLength(1))
+                    if (MatrixDecrypt.GetLength(0) == matrix.GetLength(0) || MatrixDecrypt.GetLength(1) == matrix.GetLength(1))
                     {
-                        Console.WriteLine("Iguais");
+                        Console.WriteLine("Matriz Criptografada");
+                        for (int i = 0; i < matrix.GetLength(0); i++)
+                        {
+                            for (int j = 0; j < matrix.GetLength(1); j++)
+                            {
+                                Console.Write(NewMatrix[i, j] + " ");
+                            }
+                            Console.WriteLine();
+                        }
+
+                        Console.WriteLine();
+                        Console.WriteLine("Matriz nova Descriptografada, Resultado de Criptografada x Decodificadora ");
+                        for (int i = 0; i < DecryptedMatrix.GetLength(0); i++)
+                        {
+                            for (int j = 0; j < DecryptedMatrix.GetLength(1); j++)
+                            {
+                                Console.Write(DecryptedMatrix[i, j] + " ");
+                            }
+                            Console.WriteLine();
+                        }
                     }
                     break;
                 }
@@ -237,13 +243,12 @@ namespace MyApp
             }
         }
 
-        static int[,] DecryptMatrix(int[,] Encrypted  )
+        static int[,] DecryptMatrix(int[,] Encrypted, int [,]DecryptedMatrix  )
         {
             Console.WriteLine();
             TextAnimation();
 
-            int[,] MatrixForDecrypt = new int[,]{{1, -1}, {-2, 3}};//esta matriz é a Matriz Inversa da Matriz que criptografa  
-            int[,] DecryptedMatrix = new int[Encrypted.GetLength(0), Encrypted.GetLength(1)];
+            int[,] MatrixForDecrypt = new int[,]{{1, -1}, {-2, 3}}; //esta matriz é a Matriz Inversa da Matriz que criptografa  
 
             for (int i = 0; i < MatrixForDecrypt.GetLength(0); i++) 
             {
@@ -259,14 +264,13 @@ namespace MyApp
                 }
             }
 
-
             Console.WriteLine();
-            Console.WriteLine("Matriz nova Descriptografada: ");
-            for (int i = 0; i < DecryptedMatrix.GetLength(0); i++)
+            Console.WriteLine("Matriz Decodificadora ");
+            for (int i = 0; i < MatrixForDecrypt.GetLength(0); i++)
             {
-                for (int j = 0; j < DecryptedMatrix.GetLength(1); j++)
+                for (int j = 0; j < MatrixForDecrypt.GetLength(1); j++)
                 {
-                    Console.Write(DecryptedMatrix[i, j] + " ");
+                    Console.Write(MatrixForDecrypt[i, j] + " ");
                 }
                 Console.WriteLine();
             }
