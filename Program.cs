@@ -33,7 +33,7 @@ namespace MyApp
 
             EncryptionMethod(ref Matrix);
 
-            int[,] MatrizTeste = new int[,] {{3, 1}, {2, 1}};
+            /* int[,] MatrizTeste = new int[,] {{3, 1}, {2, 1}};
             Console.WriteLine();
             for (int i = 0; i < MatrizTeste.GetLength(0); i++)
             {
@@ -42,7 +42,7 @@ namespace MyApp
                     Console.Write(MatrizTeste[j,i] + " ");
                 }
                 Console.WriteLine();
-            }
+            } */
 
 
 
@@ -179,6 +179,7 @@ namespace MyApp
 
             for (int i = 0; i < EncoderMatrix.GetLength(0); i++) // linhas da EncoderMatrix
             {
+                
                 for (int j = 0; j < matrix.GetLength(1); j++) // colunas da matrix
                 {
                     int sum = 0;
@@ -191,8 +192,7 @@ namespace MyApp
             }
 
 
-            Console.WriteLine("Matriz nova Criptografada: ");
-            Console.WriteLine();
+            Console.WriteLine("Matriz Criptografada: "); 
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
@@ -201,6 +201,98 @@ namespace MyApp
                 }
                 Console.WriteLine();
             }
+            
+            Console.WriteLine();
+
+            while (true)
+            {
+                Console.WriteLine("Deseja Desriptografar a Matriz? S. sim / N. nao");
+                Console.WriteLine("OBS: Digite apenas S ou N...");
+
+                char ConfirmCharacter = char.Parse(Console.ReadLine()!.ToUpper());
+
+                if (ConfirmCharacter == 'S')
+                {
+
+                    int[,] MatrixDecrypt = DecryptMatrix(NewMatrix);
+                    
+                    if(MatrixDecrypt.GetLength(0) == matrix.GetLength(0) || MatrixDecrypt.GetLength(1) == matrix.GetLength(1))
+                    {
+                        Console.WriteLine("Iguais");
+                    }
+                    break;
+                }
+                else if (ConfirmCharacter == 'N')
+                {
+                    Console.WriteLine("Programa Finalizado!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Caracter é Inválido. Tenta Novamente:");
+                    Console.WriteLine();
+                }
+
+            }
         }
+
+        static int[,] DecryptMatrix(int[,] Encrypted  )
+        {
+            Console.WriteLine();
+            TextAnimation();
+
+            int[,] MatrixForDecrypt = new int[,]{{1, -1}, {-2, 3}};//esta matriz é a Matriz Inversa da Matriz que criptografa  
+            int[,] DecryptedMatrix = new int[Encrypted.GetLength(0), Encrypted.GetLength(1)];
+
+            for (int i = 0; i < MatrixForDecrypt.GetLength(0); i++) 
+            {
+                
+                for (int j = 0; j < Encrypted.GetLength(1); j++) 
+                {
+                    int sum = 0;
+                    for (int k = 0; k < Encrypted.GetLength(0); k++) 
+                    {
+                        sum += MatrixForDecrypt[i, k] * Encrypted[k, j];
+                    }
+                    DecryptedMatrix[i, j] = sum;
+                }
+            }
+
+
+            Console.WriteLine();
+            Console.WriteLine("Matriz nova Descriptografada: ");
+            for (int i = 0; i < DecryptedMatrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < DecryptedMatrix.GetLength(1); j++)
+                {
+                    Console.Write(DecryptedMatrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            return DecryptedMatrix;
+        }
+
+
+        static void TextAnimation()
+        {
+            int num = 0;
+            int pointer = 0;
+            List<char> Pointers = ['.'];
+
+            while (num <= 2)
+            {
+                Console.Clear();
+                pointer += 1;
+
+                Console.Write($"Descriptografando{string.Join("", Pointers)}");
+                Pointers.Add('.');
+                num += 1;
+                Thread.Sleep(1000);
+            }
+            Console.Clear();
+        }
+
     }
 }
